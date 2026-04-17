@@ -1,0 +1,18 @@
+sources:
+  bigquery-bbc:
+    kind: "bigquery"
+    project: "ai-hangsik"
+
+tools:
+  query_bbc:
+    kind: "bigquery-sql"
+    source: "bigquery-bbc"
+    statement:
+      SELECT category, count(*) 
+      FROM `ai-hangsik.bbc_news.fulltext` 
+      group by category
+    description: "Retrieve BBC news categories and their counts"
+
+toolsets:
+ my_bq_toolset:
+   - query_bbc
